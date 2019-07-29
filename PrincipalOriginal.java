@@ -13,6 +13,9 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.table.TableColumnModel;
 
+import Pruebas.ComponenteBotonRedondo;
+import Pruebas.Graficador;
+
 public class PrincipalOriginal extends JFrame implements ActionListener {
 
     private JPanel bienvenido, Maquinaria, Obras, Clientes, Finanzas;
@@ -26,32 +29,63 @@ public class PrincipalOriginal extends JFrame implements ActionListener {
 	 private JPanel ap[]; 
 	 int contar=0;
 	 ImageIcon Graficas = new ImageIcon("C:\\Users\\Emmanuel\\Desktop\\manual\\graf.png");
-    
+	 ImageIcon cerrar = new ImageIcon("C:\\Users\\Emmanuel\\Desktop\\cerrar2.png");	
+	 ImageIcon Empresa = new ImageIcon("C:\\Users\\Emmanuel\\Desktop\\logo.png");	
     PrincipalOriginal() {
         setSize(1366, 768);
         setTitle("Sistema de gestion de maquinaria");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setVisible(true);
 
-  
+    	JPanel cabecera;
+		cabecera = new JPanel();
+		cabecera.setBackground(Color.black);
+		cabecera.setBounds(1290,30,60,60);
+		setLayout(null);
+		
+
+    	JPanel logo;
+		logo = new JPanel();
+	    logo.setBackground(Color.black);
+		logo.setBounds(90,0,1200,114);
+		setLayout(null);
+		
+		JLabel MeterLogo= new JLabel();
+		MeterLogo.setBounds(0,0,1200,113);
+		MeterLogo.setBorder(null);
+		MeterLogo.setIcon(Empresa);
+	    logo.add(MeterLogo);
+	
+		JButton cerrarSesion= new JButton();
+		cerrarSesion.setBackground(Color.black);
+		cerrarSesion.setBounds(0,0,100,100);
+		cerrarSesion.setBorder(null);
+		cerrarSesion.setForeground(Color.white);
+		cerrarSesion.setIcon(cerrar);
+	    cabecera.add(cerrarSesion);
+		
         JPanel principal = new JPanel();
         principal.setLayout(null);
-
         principal.setBackground(Color.black);
-        principal.setBounds(0, 115, 1366, 768);
-      
-        ImageIcon background_image = new ImageIcon("C:\\Users\\Emmanuel\\Desktop\\neoo3.jpg");
-        Image img = background_image.getImage();
-        Image temp_img = img.getScaledInstance(1366, 768, Image.SCALE_SMOOTH);
-        background_image = new ImageIcon(temp_img);
-        JLabel background = new JLabel("", background_image, JLabel.CENTER);
+        principal.setBounds(0,0, 1366, 768);
+        principal.add(cabecera);  
+        principal.add(logo);
+   
+        
+        
+		
+        
+        
+        
+     
+       JLabel background = new JLabel();
         background.add(principal);
         background.setBounds(0, 0, 1366, 768);
         add(background);
 
-        /**Parte donde se agregan las PestaÒas*/
+        /**Parte donde se agregan las Pesta√±as*/
         JTabbedPane tabla = new JTabbedPane();
-        tabla.setBounds(0, 0, 1366, 768);
+        tabla.setBounds(0,115, 1366, 768);
         principal.add(tabla);
         tabla.addTab("Bienvenido al sistema ", bienvenido());
         tabla.addTab("Maquinaria", Maquinaria());
@@ -72,7 +106,7 @@ public class PrincipalOriginal extends JFrame implements ActionListener {
         setBounds(0, 0, 1366, 768);
         bienvenido.setBackground(Color.black);
         
-        JLabel manual = new JLabel("GuÌa r·pida del manual de usuario:");
+        JLabel manual = new JLabel("Gu√≠a r√°pida del manual de usuario:");
         manual.setForeground(Color.decode("#049cff"));
     	Font fuente=new Font("Arial", Font.BOLD, 16);
     	manual.setBounds(550,15,400,30);
@@ -225,7 +259,7 @@ public class PrincipalOriginal extends JFrame implements ActionListener {
         Obras.setBackground(Color.black);
 
 
-        String[] Cabecera = {"NOMBRE DE LA OBRA", "NOMBRE DEL RESPONSABLE", "FECHA DE INICIO", "FECHA DE FINALIZACI”N", "N⁄MERO DEL RESPONSABLE", "INVERSI”N $","NOMBRE DE LA EMPRESA","NUM DE M¡QUINAS RENTADAS"};
+        String[] Cabecera = {"NOMBRE DE LA OBRA", "NOMBRE DEL RESPONSABLE", "FECHA DE INICIO", "FECHA DE FINALIZACI√ìN", "N√öMERO DEL RESPONSABLE", "INVERSI√ìN $","NOMBRE DE LA EMPRESA","NUM DE M√ÅQUINAS RENTADAS"};
         String[][] datos = {{"","","","","","","",""}};
         JTable MaquinasT = new JTable(datos, Cabecera);
         JScrollPane sc = new JScrollPane(MaquinasT);
@@ -275,7 +309,7 @@ public class PrincipalOriginal extends JFrame implements ActionListener {
          Clientes.setLayout(null);
          Clientes.setBackground(Color.black);
 
-         String[] Cabecera = {"NOMBRE(S)", "CALLE", "N⁄MERO", "COLONIA", "MUNICIPIO", "ESTADO","CORREO ELECTR”NICO","N⁄MERO TELEF”NICO"};
+         String[] Cabecera = {"NOMBRE(S)", "CALLE", "N√öMERO", "COLONIA", "MUNICIPIO", "ESTADO","CORREO ELECTR√ìNICO","N√öMERO TELEF√ìNICO"};
          String[][] datos = {{"", "", "", "", "","", "",""}};
          JTable MaquinasT = new JTable(datos, Cabecera);
          JScrollPane sc = new JScrollPane(MaquinasT);
@@ -325,7 +359,7 @@ public class PrincipalOriginal extends JFrame implements ActionListener {
         Finanzas = new JPanel();
         Finanzas.setLayout(null);
         Finanzas.setBackground(Color.black);
-        JLabel FinanzasMensaje = new JLabel("Gr·ficas de finanzas mesuales");
+        JLabel FinanzasMensaje = new JLabel("Gr√°ficas de finanzas mesuales");
         FinanzasMensaje.setForeground(Color.white);
         Finanzas.add(FinanzasMensaje);
         
